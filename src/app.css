@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+	font-family: 'Hubbali Regular';
+	font-weight: normal;
+	font-style: normal;
+	src: local('Hubbali Regular'), local('Hubbali-Regular'), local('hubbaliregular'),
+		url('fonts/hubballi-webfont.woff2') format('woff2'),
+		url('fonts/hubballi-webfont.woff') format('woff');
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Hubbali Regular';
+	font-size: 1.5rem;
+}
