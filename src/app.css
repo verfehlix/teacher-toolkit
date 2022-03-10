@@ -7,8 +7,8 @@
 	font-weight: normal;
 	font-style: normal;
 	src: local('Hubbali Regular'), local('Hubbali-Regular'), local('hubbaliregular'),
-		url('fonts/hubballi-webfont.woff2') format('woff2'),
-		url('fonts/hubballi-webfont.woff') format('woff');
+		url('/fonts/hubballi-webfont.woff2') format('woff2'),
+		url('/fonts/hubballi-webfont.woff') format('woff');
 }
 
 h1,
