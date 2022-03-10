@@ -1,3 +1,4 @@
+<!-- // TODO: rename into SubjectsEditor and add functionality to add / remove subjects -->
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';

@@ -12,6 +12,7 @@
 		);
 	};
 
+	// TODO: can the use directive be used to re-use this functionality?
 	let draggingIndex: number | null = null;
 	let hoveringIndex: number | null = null;
 
@@ -46,6 +47,8 @@
 
 <label class="block text-gray-700 text-sm font-bold mb-2" for="newClassInput"> Klassen </label>
 
+<!-- // TODO: css besser machen, buttons zusammen gemeinsam umbrechen -->
+<!-- // TODO: drag und drop nur über kind, nicht über gesamtes div -->
 <div>
 	{#each $schoolClasses as schoolClass, index (schoolClass)}
 		<div
@@ -65,6 +68,7 @@
 		>
 			<div class="flex flex-row gap-4 justify-between items-center">
 				<p class="text-xl text-gray-700">{schoolClass}</p>
+				<!-- // TODO: add color select for classes -->
 				<button
 					class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded"
 					on:click={() => goto(`/settings/${schoolClass}/students`)}>Schüler:innen</button

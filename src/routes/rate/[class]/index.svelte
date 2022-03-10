@@ -10,6 +10,7 @@
 	<title>Bewerten</title>
 </svelte:head>
 
+<!-- // TODO: rename class into schoolClass -->
 <PageTitle title={`Klasse: ${$page.params.class} - Fach wählen`} />
 
 <div class="h-full w-full grid grid-rows-3 grid-cols-3 gap-8">
