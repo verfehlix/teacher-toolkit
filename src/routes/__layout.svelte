@@ -12,11 +12,11 @@
 		</li>
 		<li>
 			<a
-				class:selected={$page.url.pathname === '/classes'}
+				class:selected={$page.url.pathname === '/settings'}
 				class="no-underline hover:underline"
-				href="/classes"
+				href="/settings"
 			>
-				Classes
+				Settings
 			</a>
 		</li>
 	</ul>
@@ -41,10 +41,15 @@
 		position: fixed;
 		width: 20vw;
 		height: 100%;
+
 		border-right: 1px solid black;
+
+		padding: 2rem;
 	}
 
 	.main {
 		grid-column-start: 2;
+		height: 100vh;
+		padding: 2rem;
 	}
 </style>

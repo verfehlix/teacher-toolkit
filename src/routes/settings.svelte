@@ -18,7 +18,7 @@
 </script>
 
 <svelte:head>
-	<title>TTK - Classes</title>
+	<title>Settings</title>
 </svelte:head>
 
 <h1>Classes</h1>
