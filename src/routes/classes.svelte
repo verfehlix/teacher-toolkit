@@ -1,18 +1,18 @@
-<script>
-	const alphabet = 'abcd';
-
-	let schoolClasses = ['3a', '2b'];
+<script lang="typescript">
+	import { schoolClasses } from '../store';
 
 	let schoolClassInput = '';
 
 	const addSchoolClass = () => {
-		schoolClasses = [...schoolClasses, schoolClassInput];
+		schoolClasses.update((existingSchoolClasses) => [...existingSchoolClasses, schoolClassInput]);
 		schoolClassInput = '';
 	};
 
 	const deleteSchoolClass = (schoolClassToBeDeleted) => {
-		schoolClasses = schoolClasses.filter(
-			(currentSchoolClass) => currentSchoolClass !== schoolClassToBeDeleted
+		schoolClasses.update((existingSchoolClasses) =>
+			existingSchoolClasses.filter(
+				(currentSchoolClass) => currentSchoolClass !== schoolClassToBeDeleted
+			)
 		);
 	};
 </script>
@@ -25,7 +25,7 @@
 <input type="text" bind:value={schoolClassInput} />
 <button on:click={addSchoolClass}>add class</button>
 <ul>
-	{#each schoolClasses as schoolClass}
+	{#each $schoolClasses as schoolClass}
 		<li>
 			<div style="display: flex; flex-direction: row; gap: 1rem;">
 				<p>{schoolClass}</p>

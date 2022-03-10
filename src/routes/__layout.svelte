@@ -1,4 +1,4 @@
-<script>
+<script lang="typescript">
 	import '../app.css';
 	import { page } from '$app/stores';
 </script>
