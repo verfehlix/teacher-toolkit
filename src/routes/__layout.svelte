@@ -1,4 +1,4 @@
-<script lang="typescript">
+<script lang="ts">
 	import '../app.css';
 	import { page } from '$app/stores';
 </script>
@@ -6,7 +6,11 @@
 <nav class="sidebar">
 	<ul>
 		<li>
-			<a class:selected={$page.url.pathname === '/'} class="no-underline hover:underline" href="/">
+			<a
+				class:selected={$page.url.pathname === '/home' || $page.url.pathname.startsWith('/rate')}
+				class="no-underline hover:underline"
+				href="/home"
+			>
 				Home
 			</a>
 		</li>
