@@ -1,5 +1,36 @@
+<script>
+	const alphabet = 'abcd';
+
+	let schoolClasses = ['3a', '2b'];
+
+	let schoolClassInput = '';
+
+	const addSchoolClass = () => {
+		schoolClasses = [...schoolClasses, schoolClassInput];
+		schoolClassInput = '';
+	};
+
+	const deleteSchoolClass = (schoolClassToBeDeleted) => {
+		schoolClasses = schoolClasses.filter(
+			(currentSchoolClass) => currentSchoolClass !== schoolClassToBeDeleted
+		);
+	};
+</script>
+
 <svelte:head>
-    <title>TTK - Classes</title>
+	<title>TTK - Classes</title>
 </svelte:head>
 
 <h1>Classes</h1>
+<input type="text" bind:value={schoolClassInput} />
+<button on:click={addSchoolClass}>add class</button>
+<ul>
+	{#each schoolClasses as schoolClass}
+		<li>
+			<div style="display: flex; flex-direction: row; gap: 1rem;">
+				<p>{schoolClass}</p>
+				<button on:click={() => deleteSchoolClass(schoolClass)}>del</button>
+			</div>
+		</li>
+	{/each}
+</ul>
