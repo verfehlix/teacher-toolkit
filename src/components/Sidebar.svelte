@@ -1,0 +1,29 @@
+<script lang="ts">
+	import { page } from '$app/stores';
+	import SidebarLink from './SidebarLink.svelte';
+</script>
+
+<nav class="sidebar">
+	<ul>
+		<li>
+			<SidebarLink href="/home" selectedWhen={['/home', '/rate']} linkText="Home" />
+		</li>
+		<li>
+			<SidebarLink href="/settings" selectedWhen={['/settings']} linkText="Einstellungen" />
+		</li>
+	</ul>
+</nav>
+
+<style>
+	.sidebar {
+		position: fixed;
+		width: 20vw;
+		height: 100%;
+
+		border-right: 1px solid black;
+
+		padding: 2rem;
+
+		box-shadow: 10px 0 5px -2px #ccc;
+	}
+</style>

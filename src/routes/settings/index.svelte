@@ -1,4 +1,5 @@
 <script lang="ts">
+	import PageTitle from '../../components/PageTitle.svelte';
 	import { schoolClasses } from '../../store';
 
 	let schoolClassInput = '';
@@ -18,10 +19,10 @@
 </script>
 
 <svelte:head>
-	<title>Settings</title>
+	<title>Einstellungen</title>
 </svelte:head>
 
-<h1>Classes</h1>
+<PageTitle title="Einstellungen" />
 <input type="text" bind:value={schoolClassInput} />
 <button on:click={addSchoolClass}>add class</button>
 <ul>
