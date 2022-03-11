@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import type { Color } from '../util/Color';
-	import { mapColorToCss } from '../util/Color';
+	import type { Color } from '../../util/Color';
+	import { mapColorToCss } from '../../util/Color';
 
 	export let subject: string;
 	export let color: Color;

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import ClassEditor from '../../components/ClassEditor.svelte';
-	import PageTitle from '../../components/PageTitle.svelte';
+	import ClassEditor from '../../components/settings/ClassEditor.svelte';
+	import PageTitle from '../../components/shared/PageTitle.svelte';
 </script>
 
 <svelte:head>

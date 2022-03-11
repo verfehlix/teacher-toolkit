@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { schoolClasses } from '../store';
+	import { schoolClasses } from '../../store';
 
 	let schoolClassInput = '';
 

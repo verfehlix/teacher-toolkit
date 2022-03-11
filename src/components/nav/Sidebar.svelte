@@ -6,7 +6,7 @@
 <nav class="sidebar">
 	<ul>
 		<li>
-			<SidebarLink href="/home" selectedWhen={['/home', '/rate']} linkText="Home" />
+			<SidebarLink href="/rate" selectedWhen={['/rate']} linkText="Bewerten" />
 		</li>
 		<li>
 			<SidebarLink href="/settings" selectedWhen={['/settings']} linkText="Einstellungen" />

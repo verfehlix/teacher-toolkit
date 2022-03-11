@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { schoolClasses } from '../../store';
 	import { Color } from '../../util/Color';
-	import ClassBox from '../../components/ClassBox.svelte';
-	import PageTitle from '../../components/PageTitle.svelte';
+	import ClassBox from '../../components/rate/ClassBox.svelte';
+	import PageTitle from '../../components/shared/PageTitle.svelte';
 </script>
 
 <svelte:head>

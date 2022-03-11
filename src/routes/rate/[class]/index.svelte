@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { subjects } from '../../../store';
 	import { page } from '$app/stores';
-	import SubjectBox from '../../../components/SubjectBox.svelte';
-	import PageTitle from '../../../components/PageTitle.svelte';
+	import SubjectBox from '../../../components/rate/SubjectBox.svelte';
+	import PageTitle from '../../../components/shared/PageTitle.svelte';
 	import { Color } from '../../../util/Color';
 </script>
 

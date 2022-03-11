@@ -2,7 +2,7 @@
 	import { flip } from 'svelte/animate';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { schoolClasses } from '../store';
+	import { schoolClasses } from '../../store';
 
 	const deleteSchoolClass = (schoolClassToBeDeleted) => {
 		schoolClasses.update((existingSchoolClasses) =>

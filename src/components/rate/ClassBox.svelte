@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import type { Color } from '../util/Color';
-	import { mapColorToCss } from '../util/Color';
+	import type { Color } from '../../util/Color';
+	import { mapColorToCss } from '../../util/Color';
 
 	export let className: string;
 	export let color: Color;
