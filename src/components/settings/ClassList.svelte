@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { flip } from 'svelte/animate';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { schoolClasses } from '../../store';
@@ -55,9 +54,8 @@
 			class="border-2 rounded-l p-3 mb-4"
 			class:bg-slate-200={$page.params.schoolClass === schoolClass}
 			class:bg-white={draggingIndex === index}
-			class:bg-blue-500={hoveringIndex === index}
+			class:border-blue-500={hoveringIndex === index}
 			draggable={true}
-			animate:flip
 			on:dragstart={(event) => dragstart(event, index)}
 			on:drop={(event) => drop(event, index)}
 			on:dragover={(event) => event.preventDefault()}
@@ -66,21 +64,37 @@
 				hoveringIndex = index;
 			}}
 		>
-			<div class="flex flex-row gap-4 justify-between items-center">
-				<p class="text-xl text-gray-700">{schoolClass}</p>
+			<div class="flex flex-row gap-4 justify-between items-center flex-wrap">
+				<p class="text-xl text-gray-700" class:font-bold={$page.params.schoolClass === schoolClass}>
+					{schoolClass}
+				</p>
 				<!-- // TODO: add color select for classes -->
-				<button
-					class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded"
-					on:click={() => goto(`/settings/${schoolClass}/students`)}>Schüler:innen</button
-				>
-				<button
-					class="bg-teal-500 hover:bg-teal-400 text-white font-bold py-2 px-4 border-b-4 border-teal-700 hover:border-teal-500 rounded"
-					on:click={() => goto(`/settings/${schoolClass}/subjects`)}>Fächer</button
-				>
-				<button
-					class="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded"
-					on:click={() => deleteSchoolClass(schoolClass)}>-</button
-				>
+				<div class="flex flex-row gap-2 justify-end items-center flex-nowrap">
+					<button
+						class="bg-gradient-to-tl from-pink-500 via-red-500 to-yellow-500 text-white text-xs font-bold py-2 px-2 border-b-4 border-transparent rounded"
+						>Farbe</button
+					>
+					<button
+						class="bg-green-500 hover:bg-green-400 text-white text-xs font-bold py-2 px-2 border-b-4 border-green-700 hover:border-green-500 rounded"
+						class:bg-green-400={$page.url.toString().endsWith('/students') &&
+							$page.params.schoolClass === schoolClass}
+						class:border-green-500={$page.url.toString().endsWith('/students') &&
+							$page.params.schoolClass === schoolClass}
+						on:click={() => goto(`/settings/${schoolClass}/students`)}>Schüler:innen</button
+					>
+					<button
+						class="bg-teal-500 hover:bg-teal-400 text-white text-xs font-bold py-2 px-2 border-b-4 border-teal-700 hover:border-teal-500 rounded"
+						class:bg-teal-400={$page.url.toString().endsWith('/subjects') &&
+							$page.params.schoolClass === schoolClass}
+						class:border-teal-500={$page.url.toString().endsWith('/subjects') &&
+							$page.params.schoolClass === schoolClass}
+						on:click={() => goto(`/settings/${schoolClass}/subjects`)}>Fächer</button
+					>
+					<button
+						class="bg-red-500 hover:bg-red-400 text-white text-xs font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded"
+						on:click={() => deleteSchoolClass(schoolClass)}>-</button
+					>
+				</div>
 			</div>
 		</div>
 	{/each}
