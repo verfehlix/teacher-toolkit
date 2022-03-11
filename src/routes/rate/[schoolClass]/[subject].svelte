@@ -7,4 +7,4 @@
 	<title>Bewerten</title>
 </svelte:head>
 
-<PageTitle title={`${$page.params.class} - ${$page.params.subject}`} />
+<PageTitle title={`${$page.params.schoolClass} - ${$page.params.subject}`} />

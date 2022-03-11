@@ -12,7 +12,7 @@
 
 <div
 	class="bg-gradient-to-tl {cssColorString} shadow-l rounded-xl p-8 flex justify-center items-center hover:shadow-xl hover:cursor-pointer"
-	on:click={() => goto(`/rate/${$page.params.class}/${subject}`)}
+	on:click={() => goto(`/rate/${$page.params.schoolClass}/${subject}`)}
 >
 	<h1 class="text-6xl text-white">{subject}</h1>
 </div>
