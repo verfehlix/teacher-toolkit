@@ -2,9 +2,12 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import { colors } from '../../util/Color';
+	import { colors, type Color, type ColorName } from '../../util/Color';
 	import ColoredBox from '../shared/ColoredBox.svelte';
-	import AddClass from './AddClass.svelte';
+
+	const currentColorName = 'Oceanic';
+
+	const allColorNames: ColorName[] = Object.keys(colors) as ColorName[];
 </script>
 
 <p class="block text-gray-700 text-sm font-bold mb-2">
@@ -12,17 +15,14 @@
 </p>
 
 <p class="mt-8 block text-gray-700 text-sm font-bold mb-2">Aktuelle Farbe:</p>
-<div
-	class={`rounded-xl hover:cursor-pointer w-24 h-16 ${
-		colors.find((color) => color.name === 'Relaxed_Rose').css
-	}`}
-	title="Relaxed Rose"
-/>
+<ColoredBox colorName={currentColorName}>
+	<p>{currentColorName}</p></ColoredBox
+>
 
 <p class="mt-8 block text-gray-700 text-sm font-bold mb-2">Neue Farbe auswählen:</p>
-<div class="border-2 h-full w-full grid grid-cols-3 gap-8 max-h-96 overflow-y-scroll">
-	{#each colors as color}
-		<ColoredBox {color}><p>{color.name}</p></ColoredBox>
+<div class="h-full w-full grid grid-cols-3 gap-8 max-h-96 p-4 overflow-y-scroll">
+	{#each allColorNames as colorName}
+		<ColoredBox {colorName}><p>{colorName}</p></ColoredBox>
 	{/each}
 </div>
 <button

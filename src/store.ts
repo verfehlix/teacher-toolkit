@@ -1,16 +1,32 @@
 import { writable } from 'svelte/store';
+import type { ColorName } from './util/Color';
 
-// TODO: make datastructure like so:
-/*
-    classes = [
-        {
-            name: "3a",
-            subjects: ["Mathe", "Deutsch"],
-            students: ["Max", "Jerome", ...]
-        }
-    ]
+enum Subject {
+	DEUTSCH = 'Deutsch',
+	MATHE = 'Mathe',
+	ENGLISCH = 'Englisch',
+	KUNST = 'Kunst',
+	MUSIK = 'Musik'
+}
 
-*/
-export const schoolClasses = writable(['3a', '2b', '1a', '2a']);
+interface Student {
+	name: string;
+}
+
+interface SchoolClass {
+	name: string;
+	colorName: ColorName;
+	subjects: Subject[];
+	students: Student[];
+}
+
+export const schoolClasses = writable<SchoolClass[]>([
+	{
+		name: '3a',
+		colorName: 'Oceanic',
+		students: [],
+		subjects: []
+	}
+]);
 
 export const subjects = writable(['Deutsch', 'Englisch', 'Mathe', 'Kunst', 'Musik']);

@@ -13,6 +13,6 @@
 
 <div class="h-full w-full grid grid-rows-3 grid-cols-3 gap-8">
 	{#each $subjects as subject}
-		<SubjectBox {subject} color="Sunset" />
+		<SubjectBox {subject} colorName="Hyper" />
 	{/each}
 </div>

@@ -53,7 +53,7 @@
 	{#each $schoolClasses as schoolClass, index (schoolClass)}
 		<div
 			class="border-2 rounded-l p-3 mb-4"
-			class:bg-slate-200={$page.params.schoolClass === schoolClass}
+			class:bg-slate-200={$page.params.schoolClass === schoolClass.name}
 			class:bg-white={draggingIndex === index}
 			class:border-blue-500={hoveringIndex === index}
 			draggable={true}
@@ -69,29 +69,32 @@
 				<div class="flex flex-row gap-4 justify-start items-center flex-nowrap">
 					<p
 						class="text-xl text-gray-700"
-						class:font-bold={$page.params.schoolClass === schoolClass}
+						class:font-bold={$page.params.schoolClass === schoolClass.name}
 					>
-						{schoolClass}
+						{schoolClass.name}
 					</p>
-					<ColorPicker {schoolClass} />
+					<ColorPicker schoolClass={schoolClass.name} />
 				</div>
 
 				<div class="flex flex-row gap-2 justify-end items-center flex-nowrap">
 					<button
 						class="bg-green-500 hover:bg-green-400 text-white text-xs font-bold py-2 px-2 border-b-4 border-green-700 hover:border-green-500 rounded"
 						class:bg-green-400={$page.url.toString().endsWith('/students') &&
-							$page.params.schoolClass === schoolClass}
+							$page.params.schoolClass === schoolClass.name}
 						class:border-green-500={$page.url.toString().endsWith('/students') &&
-							$page.params.schoolClass === schoolClass}
-						on:click={() => goto(`/settings/${schoolClass}/students`)}>Schüler:innen</button
+							$page.params.schoolClass === schoolClass.name}
+						on:click={() => goto(`/settings/${schoolClass}/students`)}
+					>
+						{schoolClass.students.length} Schüler:innen</button
 					>
 					<button
 						class="bg-teal-500 hover:bg-teal-400 text-white text-xs font-bold py-2 px-2 border-b-4 border-teal-700 hover:border-teal-500 rounded"
 						class:bg-teal-400={$page.url.toString().endsWith('/subjects') &&
-							$page.params.schoolClass === schoolClass}
+							$page.params.schoolClass === schoolClass.name}
 						class:border-teal-500={$page.url.toString().endsWith('/subjects') &&
-							$page.params.schoolClass === schoolClass}
-						on:click={() => goto(`/settings/${schoolClass}/subjects`)}>Fächer</button
+							$page.params.schoolClass === schoolClass.name}
+						on:click={() => goto(`/settings/${schoolClass}/subjects`)}
+						>{schoolClass.subjects.length} Fächer</button
 					>
 					<button
 						class="bg-red-500 hover:bg-red-400 text-white text-xs font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded"
