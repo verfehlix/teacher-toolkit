@@ -3,7 +3,7 @@
 	import { colors } from '../../util/Color';
 
 	export let colorName: ColorName;
-	export let onClick: () => void = () => {};
+	export let onClick: () => void = null;
 </script>
 
 <div

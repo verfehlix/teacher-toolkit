@@ -2,7 +2,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import { colors, type Color, type ColorName } from '../../util/Color';
+	import { colors, type ColorName } from '../../util/Color';
 	import ColoredBox from '../shared/ColoredBox.svelte';
 
 	const currentColorName = 'Oceanic';
