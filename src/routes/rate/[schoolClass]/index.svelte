@@ -3,7 +3,6 @@
 	import { page } from '$app/stores';
 	import SubjectBox from '../../../components/rate/SubjectBox.svelte';
 	import PageTitle from '../../../components/shared/PageTitle.svelte';
-	import { Color } from '../../../util/Color';
 </script>
 
 <svelte:head>
@@ -14,6 +13,6 @@
 
 <div class="h-full w-full grid grid-rows-3 grid-cols-3 gap-8">
 	{#each $subjects as subject}
-		<SubjectBox {subject} color={Color.ROSE} />
+		<SubjectBox {subject} color="Sunset" />
 	{/each}
 </div>

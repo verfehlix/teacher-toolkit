@@ -12,7 +12,7 @@
 	<div class="border p-4">
 		<ClassEditor />
 	</div>
-	<div class="border p-4">
+	<div class="border p-4 max-h-96 overflow-y-scroll">
 		<slot />
 	</div>
 </div>
