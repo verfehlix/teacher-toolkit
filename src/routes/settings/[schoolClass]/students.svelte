@@ -1,5 +1,5 @@
 <script>
-	import StudentsEdit from '../../../components/settings/StudentsEditor.svelte';
+	import StudentsEditor from '../../../components/settings/StudentsEditor.svelte';
 </script>
 
-<StudentsEdit />
+<StudentsEditor />

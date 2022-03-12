@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { schoolClasses } from '../../store';
+	import ColorPicker from './ColorPicker.svelte';
 
 	const deleteSchoolClass = (schoolClassToBeDeleted) => {
 		schoolClasses.update((existingSchoolClasses) =>
@@ -65,15 +66,17 @@
 			}}
 		>
 			<div class="flex flex-row gap-4 justify-between items-center flex-wrap">
-				<p class="text-xl text-gray-700" class:font-bold={$page.params.schoolClass === schoolClass}>
-					{schoolClass}
-				</p>
-				<!-- // TODO: add color select for classes -->
-				<div class="flex flex-row gap-2 justify-end items-center flex-nowrap">
-					<button
-						class="bg-gradient-to-tl from-pink-500 via-red-500 to-yellow-500 text-white text-xs font-bold py-2 px-2 border-b-4 border-transparent rounded"
-						>Farbe</button
+				<div class="flex flex-row gap-4 justify-start items-center flex-nowrap">
+					<p
+						class="text-xl text-gray-700"
+						class:font-bold={$page.params.schoolClass === schoolClass}
 					>
+						{schoolClass}
+					</p>
+					<ColorPicker {schoolClass} />
+				</div>
+
+				<div class="flex flex-row gap-2 justify-end items-center flex-nowrap">
 					<button
 						class="bg-green-500 hover:bg-green-400 text-white text-xs font-bold py-2 px-2 border-b-4 border-green-700 hover:border-green-500 rounded"
 						class:bg-green-400={$page.url.toString().endsWith('/students') &&
