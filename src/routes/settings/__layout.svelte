@@ -9,10 +9,10 @@
 
 <PageTitle title="Einstellungen" />
 <div class="grid grid-cols-2 gap-4">
-	<div class="border p-4">
+	<div class="border p-4 h-full">
 		<ClassEditor />
 	</div>
-	<div class="border p-4 max-h-96 overflow-y-scroll">
+	<div class="border p-4 h-full overflow-y-scroll">
 		<slot />
 	</div>
 </div>
