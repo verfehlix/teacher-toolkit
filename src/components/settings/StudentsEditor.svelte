@@ -5,9 +5,9 @@
 	const students = ['Hannah Günter', 'Leni Weinem', 'Tilo Masch', 'Max Jung', 'Fabian Stegoman'];
 </script>
 
-<label class="block text-gray-700 text-sm font-bold mb-2" for="newClassInput">
-	Schüler:innen der Klasse {$page.params.schoolClass}</label
->
+<p class="block text-gray-700 text-sm font-bold mb-2">
+	Schüler:innen der Klasse {$page.params.schoolClass}
+</p>
 
 <ul>
 	{#each students as student}

@@ -4,10 +4,10 @@
 	import { schoolClasses } from '../../store';
 	import ColorPicker from './ColorPicker.svelte';
 
-	const deleteSchoolClass = (schoolClassToBeDeleted) => {
+	const deleteSchoolClass = (deletedClassName: string) => {
 		schoolClasses.update((existingSchoolClasses) =>
 			existingSchoolClasses.filter(
-				(currentSchoolClass) => currentSchoolClass !== schoolClassToBeDeleted
+				(currentSchoolClass) => currentSchoolClass.name !== deletedClassName
 			)
 		);
 	};
@@ -45,7 +45,7 @@
 	};
 </script>
 
-<label class="block text-gray-700 text-sm font-bold mb-2" for="newClassInput"> Klassen </label>
+<p class="block text-gray-700 text-sm font-bold mb-2">Klassen</p>
 
 <!-- // TODO: css besser machen, buttons zusammen gemeinsam umbrechen -->
 <!-- // TODO: drag und drop nur über kind, nicht über gesamtes div -->
@@ -73,7 +73,12 @@
 					>
 						{schoolClass.name}
 					</p>
-					<ColorPicker schoolClass={schoolClass.name} />
+					<ColorPicker
+						colorName={schoolClass.colorName}
+						selected={$page.url.toString().endsWith('/color') &&
+							$page.params.schoolClass === schoolClass.name}
+						onClick={() => goto(`/settings/${schoolClass.name}/color`)}
+					/>
 				</div>
 
 				<div class="flex flex-row gap-2 justify-end items-center flex-nowrap">
@@ -83,7 +88,7 @@
 							$page.params.schoolClass === schoolClass.name}
 						class:border-green-500={$page.url.toString().endsWith('/students') &&
 							$page.params.schoolClass === schoolClass.name}
-						on:click={() => goto(`/settings/${schoolClass}/students`)}
+						on:click={() => goto(`/settings/${schoolClass.name}/students`)}
 					>
 						{schoolClass.students.length} Schüler:innen</button
 					>
@@ -93,12 +98,12 @@
 							$page.params.schoolClass === schoolClass.name}
 						class:border-teal-500={$page.url.toString().endsWith('/subjects') &&
 							$page.params.schoolClass === schoolClass.name}
-						on:click={() => goto(`/settings/${schoolClass}/subjects`)}
+						on:click={() => goto(`/settings/${schoolClass.name}/subjects`)}
 						>{schoolClass.subjects.length} Fächer</button
 					>
 					<button
 						class="bg-red-500 hover:bg-red-400 text-white text-xs font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded"
-						on:click={() => deleteSchoolClass(schoolClass)}>-</button
+						on:click={() => deleteSchoolClass(schoolClass.name)}>-</button
 					>
 				</div>
 			</div>

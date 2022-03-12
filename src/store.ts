@@ -13,7 +13,7 @@ interface Student {
 	name: string;
 }
 
-interface SchoolClass {
+export interface SchoolClass {
 	name: string;
 	colorName: ColorName;
 	subjects: Subject[];
@@ -26,7 +26,11 @@ export const schoolClasses = writable<SchoolClass[]>([
 		colorName: 'Oceanic',
 		students: [],
 		subjects: []
+	},
+	{
+		name: '4b',
+		colorName: 'Pink_Neon',
+		students: [],
+		subjects: []
 	}
 ]);
-
-export const subjects = writable(['Deutsch', 'Englisch', 'Mathe', 'Kunst', 'Musik']);

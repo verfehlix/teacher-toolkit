@@ -4,7 +4,15 @@
 	let schoolClassInput = '';
 
 	const addSchoolClass = () => {
-		schoolClasses.update((existingSchoolClasses) => [...existingSchoolClasses, schoolClassInput]);
+		schoolClasses.update((existingSchoolClasses) => [
+			...existingSchoolClasses,
+			{
+				name: schoolClassInput,
+				colorName: 'Valentine',
+				students: [],
+				subjects: []
+			}
+		]);
 		schoolClassInput = '';
 	};
 </script>

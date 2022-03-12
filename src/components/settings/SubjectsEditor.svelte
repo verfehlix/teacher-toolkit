@@ -5,9 +5,9 @@
 	const subjects = ['Deutsch', 'Englisch', 'Mathe', 'Kunst'];
 </script>
 
-<label class="block text-gray-700 text-sm font-bold mb-2" for="newClassInput">
-	Fächer in der Klasse {$page.params.schoolClass}</label
->
+<p class="block text-gray-700 text-sm font-bold mb-2">
+	Fächer in der Klasse {$page.params.schoolClass}
+</p>
 
 <ul>
 	{#each subjects as subject}
