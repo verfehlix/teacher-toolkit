@@ -37,3 +37,5 @@ export const schoolClasses = writable<SchoolClass[]>([
 		subjects: []
 	}
 ]);
+
+// TODO: save store to localStorage/indexedDB via https://dexie.org/docs/Tutorial/Svelte oder https://github.com/MacFJA/svelte-persistent-store

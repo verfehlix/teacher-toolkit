@@ -10,6 +10,7 @@
 		<li>
 			<SidebarLink href="/settings" selectedWhen={['/settings']} linkText="Einstellungen" />
 		</li>
+		<!-- TODO: Auswertung / Import / Export functionality -->
 	</ul>
 </nav>
 

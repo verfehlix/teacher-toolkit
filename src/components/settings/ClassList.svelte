@@ -57,6 +57,7 @@
 						<path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
 					</svg>
 
+					<!-- TODO: make classname editable -->
 					<p
 						class="text-xl text-gray-700"
 						class:font-bold={$page.params.schoolClass === schoolClass.name}
@@ -73,6 +74,7 @@
 				</div>
 
 				<div class="flex flex-row gap-2 justify-end items-center flex-nowrap">
+					<!-- TODO: make buttons into components -->
 					<button
 						class="bg-green-500 hover:bg-green-400 text-white text-xs font-bold py-2 px-2 border-b-4 border-green-700 hover:border-green-500 rounded"
 						class:bg-green-400={$page.url.toString().endsWith('/students') &&

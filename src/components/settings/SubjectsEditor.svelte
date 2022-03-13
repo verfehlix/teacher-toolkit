@@ -1,4 +1,4 @@
-<!-- // TODO: add functionality to add / remove subjects -->
+<!-- // TODO: add / remove subjects -->
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';

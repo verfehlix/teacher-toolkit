@@ -13,7 +13,7 @@
 <PageTitle title="Einstellungen" />
 <div class="grid grid-cols-2 gap-4">
 	<div class="border p-4 h-fit">
-		<!-- TODO: make classlist scrollable with sticky add button at bottom -->
+		<!-- TODO: scrollable classlist with sticky "add" button at bottom -->
 		<ClassEditor />
 	</div>
 	<div class="p-4 h-full" class:border={$page.url.pathname !== '/settings'}>
