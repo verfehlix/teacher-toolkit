@@ -1,7 +1,9 @@
 <script lang="ts">
+	import { dndzone, SOURCES, TRIGGERS } from 'svelte-dnd-action';
+	import { flip } from 'svelte/animate';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { schoolClasses } from '../../store';
+	import { schoolClasses, type SchoolClass } from '../../store';
 	import ColorPicker from './ColorPicker.svelte';
 
 	const deleteSchoolClass = (deletedClassName: string) => {
@@ -12,67 +14,56 @@
 		);
 	};
 
-	// TODO: can the use directive be used to re-use this functionality?
-	let draggingIndex: number | null = null;
-	let hoveringIndex: number | null = null;
-
-	const drop = (event: DragEvent, target: number) => {
-		event.preventDefault();
-
-		draggingIndex = null;
-
-		event.dataTransfer.dropEffect = 'move';
-
-		const start = parseInt(event.dataTransfer.getData('text/plain'));
-		const newTracklist = $schoolClasses;
-
-		if (start < target) {
-			newTracklist.splice(target + 1, 0, newTracklist[start]);
-			newTracklist.splice(start, 1);
-		} else {
-			newTracklist.splice(target, 0, newTracklist[start]);
-			newTracklist.splice(start + 1, 1);
-		}
-		schoolClasses.set(newTracklist);
-		hoveringIndex = null;
-	};
-
-	const dragstart = (event: DragEvent, index: number) => {
-		draggingIndex = index;
-		event.dataTransfer.effectAllowed = 'move';
-		event.dataTransfer.dropEffect = 'move';
-		event.dataTransfer.setData('text/plain', `${index}`);
-	};
+	// drag & drop
+	const flipDurationMs = 100;
+	let dragDisabled = true;
+	function handleConsider({ detail: { items } }: CustomEvent<DndEvent>) {
+		schoolClasses.set(items as SchoolClass[]);
+	}
+	function handleFinalize({ detail: { items } }: CustomEvent<DndEvent>) {
+		schoolClasses.set(items as SchoolClass[]);
+		dragDisabled = true;
+	}
+	function startDrag(e) {
+		e.preventDefault();
+		dragDisabled = false;
+	}
 </script>
 
 <p class="block text-gray-700 text-sm font-bold mb-2">Klassen</p>
 
-<!-- // TODO: css besser machen, buttons zusammen gemeinsam umbrechen -->
-<!-- // TODO: drag und drop nur über kind, nicht über gesamtes div -->
-<div>
-	{#each $schoolClasses as schoolClass, index (schoolClass)}
+<section
+	use:dndzone={{ items: $schoolClasses, dragDisabled, flipDurationMs }}
+	on:consider={handleConsider}
+	on:finalize={handleFinalize}
+>
+	{#each $schoolClasses as schoolClass (schoolClass.id)}
 		<div
 			class="border-2 rounded-l p-3 mb-4"
 			class:bg-slate-200={$page.params.schoolClass === schoolClass.name}
-			class:bg-white={draggingIndex === index}
-			class:border-blue-500={hoveringIndex === index}
-			draggable={true}
-			on:dragstart={(event) => dragstart(event, index)}
-			on:drop={(event) => drop(event, index)}
-			on:dragover={(event) => event.preventDefault()}
-			on:dragenter={(event) => {
-				event.preventDefault();
-				hoveringIndex = index;
-			}}
+			animate:flip={{ duration: flipDurationMs }}
 		>
 			<div class="flex flex-row gap-4 justify-between items-center flex-wrap">
 				<div class="flex flex-row gap-4 justify-start items-center flex-nowrap">
+					<svg
+						class="h-4 w-4 stroke-slate-700 hover:cursor-drag"
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="2"
+						on:mousedown={startDrag}
+						on:touchstart={startDrag}
+					>
+						<path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+					</svg>
+
 					<p
 						class="text-xl text-gray-700"
 						class:font-bold={$page.params.schoolClass === schoolClass.name}
 					>
 						{schoolClass.name}
 					</p>
+
 					<ColorPicker
 						colorName={schoolClass.colorName}
 						selected={$page.url.toString().endsWith('/color') &&
@@ -109,4 +100,4 @@
 			</div>
 		</div>
 	{/each}
-</div>
+</section>

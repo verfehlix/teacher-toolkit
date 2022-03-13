@@ -1622,6 +1622,11 @@ svelte-check@^2.2.6:
     svelte-preprocess "^4.0.0"
     typescript "*"
 
+svelte-dnd-action@^0.9.17:
+  version "0.9.17"
+  resolved "https://registry.yarnpkg.com/svelte-dnd-action/-/svelte-dnd-action-0.9.17.tgz#d4c9fd24e23be056b82d5a0a1dd870c9a3cf35fe"
+  integrity sha512-9OHClTATwkUfZdW0U4j3iYa4IUE3ZRoqZkT0fzhjDvlgI80S5WR0M0wC0vN2+Jp0TUhkhqoC+1KULUpYsTIseQ==
+
 svelte-hmr@^0.14.9:
   version "0.14.10"
   resolved "https://registry.yarnpkg.com/svelte-hmr/-/svelte-hmr-0.14.10.tgz#eb383c7e8791e81ccc64958847908eb88a6aee08"

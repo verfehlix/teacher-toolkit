@@ -7,6 +7,7 @@
 		schoolClasses.update((existingSchoolClasses) => [
 			...existingSchoolClasses,
 			{
+				id: `class-${schoolClassInput}`,
 				name: schoolClassInput,
 				colorName: 'Valentine',
 				students: [],
